@@ -27,10 +27,12 @@ async function fetchData() {
   const hooks = [];
 
   pages.results.forEach((page) => {
-    if (page.properties.Type && page.properties.Type.select.name === 'Tactic') {
-      tactics.push(page.properties.Slug.rich_text[0].plain_text);
-    } else if (page.properties.Type && page.properties.Type.select.name === 'Hook') {
-      hooks.push(page.properties.Slug.rich_text[0].plain_text);
+    if (page.properties.Slug && page.properties.Slug.rich_text && page.properties.Slug.rich_text[0] && page.properties.Slug.rich_text[0].plain_text) {
+      if (page.properties.Type && page.properties.Type.select.name === 'Tactic') {
+        tactics.push(page.properties.Slug.rich_text[0].plain_text);
+      } else if (page.properties.Type && page.properties.Type.select.name === 'Hook') {
+        hooks.push(page.properties.Slug.rich_text[0].plain_text);
+      }
     }
   });
 
