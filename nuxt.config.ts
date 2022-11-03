@@ -7,7 +7,7 @@ export default defineNuxtConfig({
         { name: 'description', content: '' } // TODO: fill in the blanks...
       ],
       link: [
-        { 
+        {
           rel: 'preconnect',
           href: 'https://assets.more-onion.com'
         },
@@ -17,6 +17,11 @@ export default defineNuxtConfig({
           crossorigin: ''
         }
       ]
+    }
+  },
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.URL
     }
   }
 })
