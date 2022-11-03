@@ -4,7 +4,7 @@
     <TheHeader />
 
     <section id="main">
-      <h1 class="show-for-sr">Action ideas</h1>
+      <h1 class="show-for-sr">Advocacy campaign tactic idea generator by Impact Stack</h1>
       <div class="grid-container">
         <div class="grid-x grid-margin-x">
 
