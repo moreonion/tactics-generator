@@ -1,3 +1,4 @@
+// Return a random tactic and a random hook.
 const getRandomSlugs = function({ tactics, hooks }) {
   const randomTactic = tactics[Math.floor(Math.random()*tactics.length)];
   const randomHook = hooks[Math.floor(Math.random()*hooks.length)];
