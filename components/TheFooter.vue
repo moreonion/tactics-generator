@@ -14,8 +14,8 @@
                 <li class="show-for-medium"><a href="#" @click.prevent="copyToClipboard(baseUrl + $route.fullPath)" class="button secondary small filled">Copy link</a></li>
               </ul>
               <ul class="menu">
-                <li><a href="#">About Impact Stack</a></li>
-                <li><a href="#">Submit an idea!</a></li>
+                <li><a href="https://www.impact-stack.org/" target="_blank">About Impact Stack</a></li>
+                <li><a href="https://act.more-onion.com/tactics-generator-idea" target="_blank">Submit an idea!</a></li>
               </ul>
             </div>
           </div>
