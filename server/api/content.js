@@ -1,9 +1,11 @@
 import {Client} from '@notionhq/client';
 
+// Initialize notion client.
 const notion = new Client({
   auth: process.env.NOTION_TOKEN
 });
 
+// Reduce the notion page object to the specified properties.
 function pickNotionProperties(page) {
   const result = {};
   ['Title', 'Introduction', 'Full text', 'ID'].forEach((key) => {
@@ -12,6 +14,7 @@ function pickNotionProperties(page) {
   return result;
 }
 
+// Get the actual property value out of the different nested objects.
 function parseNotionProperty(prop) {
   if (prop && prop.type === 'title') {
     return prop.title.length ? prop.title[0].plain_text : undefined;

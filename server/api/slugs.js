@@ -1,5 +1,6 @@
 import {Client} from '@notionhq/client';
 
+// Initialize notion client.
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
@@ -36,6 +37,7 @@ async function fetchData() {
   const tactics = [];
   const hooks = [];
 
+  // Gather the slugs of tactics and hooks in separate arrays.
   pages.results.forEach((page) => {
     if (page.properties.Slug && page.properties.Slug.rich_text && page.properties.Slug.rich_text[0] && page.properties.Slug.rich_text[0].plain_text) {
       if (page.properties.Type && page.properties.Type.select.name === 'Tactic') {
