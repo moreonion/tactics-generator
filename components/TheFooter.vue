@@ -7,22 +7,16 @@
             <div class="content">
               <h2>Like it? Share it.</h2>
               <ul class="menu share">
-                <li><button type="button" class="button secondary small filled">Facebook</button></li>
-                <li><button type="button" class="button secondary small filled">Twitter</button></li>
-                <li><button type="button" class="button secondary small filled">Email</button></li>
-                <li><button type="button" class="button secondary small filled">Copy link</button></li>
+                <li><a :href="`http://www.facebook.com/share.php?u=${siteUrl}${$route.fullPath}`" target="_blank" class="button secondary small filled">Facebook</a></li>
+                <li><a :href="`http://twitter.com/share?text=${siteUrl}${$route.fullPath}`" target="_blank" class="button secondary small filled">Twitter</a></li>
+                <li><a :href="`mailto:?subject=Tactic%20for%20our%20campaign&body=${siteUrl}${$route.fullPath}`" class="button secondary small filled">Email</a></li>
+                <li class="show-for-small hide-for-medium"><a :href="`whatsapp://send?text=${siteUrl}${$route.fullPath}`" class="button secondary small filled">Whatsapp</a></li>
+                <li class="show-for-medium"><a href="#" @click.prevent="copyToClipboard(siteUrl + $route.fullPath)" class="button secondary small filled">Copy link</a></li>
               </ul>
               <ul class="menu">
                 <li><a href="#">About Impact Stack</a></li>
                 <li><a href="#">Submit an idea!</a></li>
               </ul>
-              <!--
-              <ul class="menu legal">
-                <li><a href="https://www.more-onion.com/legal/" target="_blank">Terms</a></li>
-                <li><a href="https://www.more-onion.com/privacy/" target="_blank">Privacy</a></li>
-                <li><a href="https://www.more-onion.com/about/" target="_blank">About more onion</a></li>
-              </ul>
-            -->
             </div>
           </div>
         </div>
@@ -30,6 +24,16 @@
     </div>
   </section>
 </template>
+
+<script setup>
+  const siteUrl = useRuntimeConfig().NUXT_ENV_SITE_URL;
+
+  const copyToClipboard = (str) => {
+    if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+      return navigator.clipboard.writeText(str);
+    return Promise.reject('The Clipboard API is not available.');
+  };
+</script>
 
 <style scoped lang="scss">
   h2 {
@@ -52,11 +56,14 @@
     }
   }
 
-  .button.filled.small {
-    text-transform: none;
+  #footer a.button.filled.small {
+    display: inline-block;
     min-width: 12em;
     padding-left: 2em;
     text-align: left;
+    text-transform: none;
+    text-decoration: none;
     font-weight: normal;
+    color: #fff;
   }
 </style>
