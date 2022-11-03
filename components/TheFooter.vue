@@ -7,11 +7,11 @@
             <div class="content">
               <h2>Like it? Share it.</h2>
               <ul class="menu share">
-                <li><a :href="`http://www.facebook.com/share.php?u=${siteUrl}${$route.fullPath}`" target="_blank" class="button secondary small filled">Facebook</a></li>
-                <li><a :href="`http://twitter.com/share?text=${siteUrl}${$route.fullPath}`" target="_blank" class="button secondary small filled">Twitter</a></li>
-                <li><a :href="`mailto:?subject=Tactic%20for%20our%20campaign&body=${siteUrl}${$route.fullPath}`" class="button secondary small filled">Email</a></li>
-                <li class="show-for-small hide-for-medium"><a :href="`whatsapp://send?text=${siteUrl}${$route.fullPath}`" class="button secondary small filled">Whatsapp</a></li>
-                <li class="show-for-medium"><a href="#" @click.prevent="copyToClipboard(siteUrl + $route.fullPath)" class="button secondary small filled">Copy link</a></li>
+                <li><a :href="`http://www.facebook.com/share.php?u=${baseUrl}${$route.fullPath}`" target="_blank" class="button secondary small filled">Facebook</a></li>
+                <li><a :href="`http://twitter.com/share?text=${baseUrl}${$route.fullPath}`" target="_blank" class="button secondary small filled">Twitter</a></li>
+                <li><a :href="`mailto:?subject=Tactic%20for%20our%20campaign&body=${baseUrl}${$route.fullPath}`" class="button secondary small filled">Email</a></li>
+                <li class="show-for-small hide-for-medium"><a :href="`whatsapp://send?text=${baseUrl}${$route.fullPath}`" class="button secondary small filled">Whatsapp</a></li>
+                <li class="show-for-medium"><a href="#" @click.prevent="copyToClipboard(baseUrl + $route.fullPath)" class="button secondary small filled">Copy link</a></li>
               </ul>
               <ul class="menu">
                 <li><a href="#">About Impact Stack</a></li>
@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-  const siteUrl = useRuntimeConfig().NUXT_ENV_SITE_URL;
+  const baseUrl = useRuntimeConfig().baseUrl;
 
   const copyToClipboard = (str) => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText)
