@@ -23,6 +23,7 @@ import { inject, ref } from 'vue'
 import { getRandomSlugs } from '@/utils/utils'
 
 const scrollTarget = ref(null)
+const route = useRoute()
 
 const loading = ref(false)
 const smoothScroll = process.client ? inject('smoothScroll') : undefined;
@@ -49,6 +50,10 @@ const navigateToRandomRoute = async function() {
 definePageMeta({
   middleware: 'fetch-data',
   keepalive: true
+})
+
+useMeta({
+  title: `Campaign tactics generator | ${route.meta.content.tactic.Title}, ${route.meta.content.hook.Title}`
 })
 </script>
 
