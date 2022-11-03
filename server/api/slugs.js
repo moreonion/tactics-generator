@@ -8,17 +8,27 @@ async function fetchData() {
   const pages = await notion.databases.query({
     database_id: process.env.NOTION_DB_ID,
     filter: {
-      or: [
+      and: [
         {
-          property: "Type",
-          select: {
-            equals: "Tactic",
+          property: "Status",
+          status: {
+            equals: "Live"
           }
-        }, {
-          property: "Type",
-          select: {
-            equals: "Hook",
-          }
+        },
+        {
+          or: [
+            {
+              property: "Type",
+              select: {
+                equals: "Tactic",
+              }
+            }, {
+              property: "Type",
+              select: {
+                equals: "Hook",
+              }
+            }
+          ]
         }
       ]
     },
