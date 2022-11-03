@@ -26,8 +26,8 @@
 </template>
 
 <script setup>
-  const siteUrl = useRuntimeConfig().NUXT_ENV_SITE_URL;
-
+  const siteUrl = process.env && process.env.URL
+  
   const copyToClipboard = (str) => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText)
       return navigator.clipboard.writeText(str);
