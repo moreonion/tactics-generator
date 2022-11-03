@@ -2,6 +2,7 @@
   <NuxtLayout name="two-column">
 
     <template #default>
+      <div ref="scrollTarget"></div>
       <TacticDisplay :content="$route.meta.content.tactic" type="tactic" />
       <div class="tactic-seperator">+</div>
       <TacticDisplay :content="$route.meta.content.hook" type="hook" />
@@ -18,12 +19,17 @@
 </template>
 
 <script setup>
+import { inject, ref } from 'vue'
 import { getRandomSlugs } from '@/utils/utils'
 
-const { data } = await useFetch('/api/slugs', {key: 'slugs'});
-let loading = ref(false);
+const scrollTarget = ref(null)
 
-async function navigateToRandomRoute() {
+const loading = ref(false)
+const smoothScroll = process.client ? inject('smoothScroll') : undefined;
+
+const { data } = await useFetch('/api/slugs', {key: 'slugs'});
+
+const navigateToRandomRoute = async function() {
   const { randomTactic, randomHook } = getRandomSlugs(data.value);
 
   loading.value = true;
@@ -33,6 +39,11 @@ async function navigateToRandomRoute() {
   });
 
   loading.value = false;
+  smoothScroll({
+    scrollTo: scrollTarget.value,
+    offset: -16,
+    updateHistory: false
+  })
 }
 
 definePageMeta({

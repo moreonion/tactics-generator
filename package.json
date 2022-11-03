@@ -12,6 +12,7 @@
     "sass": "^1.55.0"
   },
   "dependencies": {
-    "@notionhq/client": "^2.2.1"
+    "@notionhq/client": "^2.2.1",
+    "vue3-smooth-scroll": "^0.8.1"
   }
 }
