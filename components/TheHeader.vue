@@ -8,7 +8,7 @@
           </ul>
         </div>
         <div class="title-bar-right">
-          <a href="#">About</a>
+          <a href="https://www.impact-stack.org/the-campaign-tactics-generator/" target="_blank">About</a>
         </div>
       </div>
     </div>
