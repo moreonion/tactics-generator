@@ -46,7 +46,7 @@ async function fetchData(tacticSlug, hookSlug) {
       ]
     }
   });
-  if (response.type === 'page' && response.results.length === 2) {
+  if (response.object === 'list' && response.results.length === 2) {
     const tactic = response.results.filter((result) => result.properties.Slug.rich_text[0].plain_text === tacticSlug)[0];
     const hook = response.results.filter((result) => result.properties.Slug.rich_text[0].plain_text === hookSlug)[0];
     return {
@@ -54,7 +54,9 @@ async function fetchData(tacticSlug, hookSlug) {
       hook: pickNotionProperties(hook)
     };
   } else {
-    throw createError();
+    throw createError({
+      message: 'Response from notion could not be parsed.\n' + JSON.stringify(response, null, 2)
+    });
   }
 }
 
