@@ -31,17 +31,27 @@ async function fetchData(tacticSlug, hookSlug) {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DB_ID,
     filter: {
-      or: [
+      and: [
         {
-          property: "Slug",
-          rich_text: {
-            equals: tacticSlug
+          property: "Status",
+          status: {
+            equals: "Live"
           }
-        }, {
-          property: "Slug",
-          rich_text: {
-            equals: hookSlug
-          }
+        },
+        {
+          or: [
+            {
+              property: "Slug",
+              rich_text: {
+                equals: tacticSlug
+              }
+            }, {
+              property: "Slug",
+              rich_text: {
+                equals: hookSlug
+              }
+            }
+          ]
         }
       ]
     }
