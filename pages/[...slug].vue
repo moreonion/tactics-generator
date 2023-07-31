@@ -52,7 +52,7 @@ definePageMeta({
   keepalive: true
 })
 
-useMeta({
+useHead({
   title: `Campaign tactics generator | ${route.meta.content.tactic.Title}, ${route.meta.content.hook.Title}`
 })
 </script>
