@@ -1,6 +1,6 @@
-# tactics-generator
+# engagement-generator
 
-A side project that offers a website where activists can generate ideas for campaign tactics
+A side project that offers a website where activists can generate ideas for engagement actions
 
 ## Setup
 
