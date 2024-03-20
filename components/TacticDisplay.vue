@@ -1,7 +1,7 @@
 <template>
   <article class="card">
     <div class="card-divider">
-      #{{ parseInt(content.ID.slice(0, 2), 16) }}&nbsp;{{ type === 'hook' ? 'Hook' : 'Tactic' }}
+      #{{ parseInt(content.ID.slice(0, 2), 16) }}&nbsp;{{ type === 'hook' ? 'Engagement action' : 'Objective' }}
     </div>
     <div class="card-section">
       <h2 class="primary">{{ content.Title }}</h2>
