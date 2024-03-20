@@ -1,5 +1,9 @@
 import {Client} from '@notionhq/client';
 
+// These are the ones we'll get from the database:
+const TACTIC_TYPE = 'Objective'
+const HOOK_TYPE = 'Engagement action'
+
 // Initialize notion client.
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -21,12 +25,12 @@ async function fetchData() {
             {
               property: "Type",
               select: {
-                equals: "Tactic",
+                equals: TACTIC_TYPE,
               }
             }, {
               property: "Type",
               select: {
-                equals: "Hook",
+                equals: HOOK_TYPE,
               }
             }
           ]
@@ -40,9 +44,9 @@ async function fetchData() {
   // Gather the slugs of tactics and hooks in separate arrays.
   pages.results.forEach((page) => {
     if (page.properties.Slug && page.properties.Slug.rich_text && page.properties.Slug.rich_text[0] && page.properties.Slug.rich_text[0].plain_text) {
-      if (page.properties.Type && page.properties.Type.select.name === 'Tactic') {
+      if (page.properties.Type && page.properties.Type.select.name === TACTIC_TYPE) {
         tactics.push(page.properties.Slug.rich_text[0].plain_text);
-      } else if (page.properties.Type && page.properties.Type.select.name === 'Hook') {
+      } else if (page.properties.Type && page.properties.Type.select.name === HOOK_TYPE) {
         hooks.push(page.properties.Slug.rich_text[0].plain_text);
       }
     }
