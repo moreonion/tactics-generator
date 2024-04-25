@@ -27,8 +27,8 @@ export default defineNuxtConfig({
         { name: 'twitter:creator', content: '@moreonion'},
       ],
       link: [
-        { rel: 'preconnect', href: 'https://assets.more-onion.com' },
-        { rel: 'stylesheet', href: 'https://assets.more-onion.com/ist/v1/impact-stack.css?rjzina', crossorigin: '' },
+        { rel: 'preconnect', href: 'https://assets.staging.campaignion.org' },
+        { rel: 'stylesheet', href: 'https://assets.staging.campaignion.org/mo7/v1/main.css', crossorigin: '' },
 
         { rel: 'apple-touch-icon', sizes: '57x57', href: '/apple-icon-57x57.png' },
         { rel: 'apple-touch-icon', sizes: '60x60', href: '/apple-icon-60x60.png' },
