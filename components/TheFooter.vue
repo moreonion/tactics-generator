@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-  const baseUrl = useRuntimeConfig().baseUrl;
+  const baseUrl = useRuntimeConfig().public.baseUrl;
 
   const copyToClipboard = (str) => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText)
